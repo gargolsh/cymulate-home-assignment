@@ -1,0 +1,19 @@
+{
+  "name": "cymulate_home_assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.3",
+    "playwright": "^1.52.0"
+  },
+  "scripts": {
+    "test": "npm run testHeadless",
+    "testHeadless": "npx playwright test",
+    "testHeaded": " npx playwright test --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
