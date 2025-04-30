@@ -12,6 +12,7 @@ export class ActivityLogsPageElements {
     readonly attackId1: Locator
     readonly attackId2: Locator
     readonly attackId3: Locator
+    readonly temp: Locator
 
 
     constructor(page: Page) {
@@ -22,9 +23,9 @@ export class ActivityLogsPageElements {
         this.advancedScenariosBtn = page.getByRole('button', { name: 'Advanced Scenarios' })
         this.clearBtn = page.getByRole('button', { name: 'Clear', exact: true })
         this.assessmentId = page.locator('[test-data-id="assessmentID"]')
-        this.attackId1 = page.locator('[data-test-id="\\31 -3"]').getByText('6810766a2218750c2c26c12f')
-        this.attackId2 = page.locator('[data-test-id="\\32 -3"]').getByText('6810769925b8a12946d4cbcf')
-        this.attackId3 = page.locator('[data-test-id="\\33 -3"]').getByText('6810766a2218750c2c26c12f')
+        this.attackId1 = page.locator('[data-test-id="\\31 -3"]')
+        this.attackId2 = page.locator('[data-test-id="\\32 -3"]')
+        this.attackId3 = page.locator('[data-test-id="\\33 -3"]')
     }
 
     async navigateToActivityLogsPage() {
@@ -46,9 +47,17 @@ export class ActivityLogsPageElements {
         let text1 = await this.attackId1.textContent()
         let text2 = await this.attackId2.textContent()
         let text3 = await this.attackId3.textContent()
+        text1 = this.extractAttackId(text1)
+        text2 = this.extractAttackId(text2)
+        text3 = this.extractAttackId(text3)
+
 
         console.log("Attack ID no.1:  ", text1)
         console.log("Attack ID no.2:  ", text2)
         console.log("Attack ID no.3:  ", text3)
+    }
+
+    private extractAttackId(text: string) {
+        return text.substring(text.indexOf("ID:") + 3, text.indexOf("Test"));
     }
 }
