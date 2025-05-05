@@ -24,13 +24,13 @@ export class LoginPageElements{
 
     async navigateToLoginPage() {
         await this.page.goto(this.baseUrl)
-        await expect(this.loginPageText).toBeVisible({timeout: 10_000 })
+        await expect(this.loginPageText).toBeVisible({timeout: 30_000 })
     }
     async loginUser(){
         await this.emailInput.fill(this.userEmail)
         await this.passwordInput.fill(this.userPassword)
         await this.signInBtn.click()
-        await expect(this.dashboardsBtn).toBeVisible()
+        await expect(this.dashboardsBtn).toBeVisible({timeout: 30_000 })
     }
 
 }

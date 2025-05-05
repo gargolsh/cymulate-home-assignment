@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import {LoginPageElements} from "../page_elements/login-page-elements.po";
 import {ActivityLogsPageElements} from "../page_elements/activity-logs-page-elements.po";
 
@@ -11,5 +11,6 @@ test('attack id validation test', async ({ page }) => {
   await loginPageElements.loginUser()
   await activityLogsPageElements.navigateToActivityLogsPage()
   await activityLogsPageElements.filterForAdvancedScenarios()
-  await activityLogsPageElements.getAttackIdsAndPrint()
-});
+  await activityLogsPageElements.searchForAssessmentIds()
+  await activityLogsPageElements.printUniqueAttackIds()
+})
